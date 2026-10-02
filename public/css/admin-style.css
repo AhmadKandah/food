@@ -1,0 +1,3612 @@
+:root {
+    --light: #2d2d2d;
+    --primary: #D1AB55;
+    --light-primary: #B8943F;
+    --grey: #1a1a1a;
+    --dark-grey: #757575;
+    --dark: #ffffff;
+    --danger: #D1AB55;
+    --light-danger: #B8943F;
+    --warning: #D1AB55;
+    --light-warning: #B8943F;
+    --success: #D1AB55;
+    --light-success: #B8943F;
+    --glow: #D1AB55;
+    --light-glow: #B8943F;
+    --main-blue: #D1AB55;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.bx {
+    font-size: 1.7rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body.dark {
+    --light: #1a1a1a;
+    --grey: #2d2d2d;
+    --dark: #ffffff;
+    --primary: #D1AB55;
+    --light-primary: #B8943F;
+    --dark-grey: #757575;
+    --danger: #D1AB55;
+    --light-danger: #B8943F;
+    --warning: #D1AB55;
+    --light-warning: #B8943F;
+    --success: #D1AB55;
+    --light-success: #B8943F;
+    --glow: #D1AB55;
+    --light-glow: #B8943F;
+    --main-blue: #D1AB55;
+}
+
+body {
+    background: var(--grey);
+    overflow-x: hidden;
+}
+
+/* Dark Mode Styles */
+body.dark .sidebar {
+    background: var(--light);
+    border-right: 2px solid var(--primary);
+}
+
+body.dark .sidebar .logo {
+    color: var(--primary);
+}
+
+body.dark .sidebar .logo .logo-name span {
+    color: var(--primary);
+}
+
+body.dark .sidebar .side-menu li.active {
+    background: var(--primary);
+}
+
+body.dark .sidebar .side-menu li.active::before {
+    box-shadow: 20px 20px 0 var(--primary);
+}
+
+body.dark .sidebar .side-menu li.active::after {
+    box-shadow: 20px -20px 0 var(--primary);
+}
+
+body.dark .dashboard main .insights li {
+    background: var(--light);
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(209, 171, 85, 0.2);
+}
+
+body.dark .dashboard main .insights li:hover {
+    background: var(--grey);
+    border-color: var(--light-primary);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/*
+*  ----------------- Sidebar ---------------------------
+*/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--light);
+    width: 230px;
+    height: 100%;
+    z-index: 2000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar.close {
+    width: 60px;
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: var(--glow);
+    z-index: 500;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+}
+
+.sidebar .logo .logo-name span {
+    color: #ffffff !important;
+}
+
+.sidebar .logo .bx {
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+}
+
+.sidebar .side-menu {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.sidebar .side-menu li {
+    height: 48px;
+    background: transparent;
+    margin-left: 6px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+}
+
+.sidebar .side-menu li.active {
+    background: var(--grey);
+    position: relative;
+}
+
+.sidebar .side-menu li.active::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li.active::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li a, .sidebar .side-menu li form {
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: #ffffff !important;
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li.active a {
+    color: var(--glow);
+}
+
+.sidebar.close .side-menu li a, .sidebar.close .side-menu li form {
+    width: calc(48px - (4px * 2));
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li a .bx {
+    min-width: calc(60px - (4px + 6px) * 2);
+    display: flex;
+    font-size: 1.6rem;
+    justify-content: center;
+}
+
+.sidebar .side-menu li form .bx {
+    min-width: calc(60px - (4px + 6px) * 2);
+    display: flex;
+    font-size: 1.6rem;
+    justify-content: center;
+}
+
+.sidebar .side-menu li form button {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    color: var(--danger);
+    align-items: center;
+    border: none;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li form button:hover {
+    cursor: pointer;
+}
+/*
+*  ---------------- End of Sidebar --------------------------
+*/
+
+.top-bar {
+    position: relative;
+    width: calc(100% - 230px);
+    left: 230px;
+    transition: all 0.3s ease;
+}
+
+.sidebar.close~.top-bar {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+.top-bar nav {
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 24px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.top-bar nav::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: -20px -20px 0 var(--light);
+}
+
+.top-bar nav a {
+    color: var(--dark);
+}
+
+.top-bar nav .bx.bx-menu {
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.top-bar nav .right-side {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+.top-bar nav .theme-toggle {
+    display: block;
+    min-width: 50px;
+    height: 25px;
+    background: var(--grey);
+    cursor: pointer;
+    position: relative;
+    border-radius: 25px;
+}
+
+.top-bar nav .theme-toggle::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    width: calc(25px - 4px);
+    background: var(--primary);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.top-bar nav #theme-toggle:checked+.theme-toggle::before {
+    left: calc(100% - (25px - 4px) - 2px);
+}
+
+.top-bar nav .profile {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.top-bar nav .profile i {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+section {
+    position: relative;
+    width: calc(100% - 230px);
+    left: 230px;
+    transition: all 0.3s ease;
+}
+
+main {
+    width: 100%;
+    padding: 36px 24px;
+    max-height: calc(100vh - 56px);
+}
+
+main .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 16px;
+    flex-wrap: wrap;
+}
+
+main .header .left h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+/*
+*  ------------------- Table ----------------------
+*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: hidden;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+table th {
+    background: var(--main-blue);
+    color: #FFFFFF;
+    padding: 12px 0 12px 16px;
+    font-size: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+}
+
+table td {
+    padding: 12px 0 12px 16px;
+    font-size: 16px;
+}
+
+table td a {
+    color: var(--main-blue);
+}
+
+table td i.bx {
+    margin-right: 8px;
+    font-size: 16px;
+    object-fit: cover;
+}
+
+table td img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid var(--dark-grey);
+}
+
+table td form button {
+    color: var(--main-blue);
+    border: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+table td form button:hover {
+    cursor: pointer;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--grey);
+}
+/*
+*  ----------------- End of Table ------------------------
+*/
+
+/*
+*  ------------------- Custom Table ----------------------
+*/
+table.table1 {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: hidden;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+table.table1 th {
+    background: var(--main-blue);
+    color: #FFFFFF;
+    padding: 12px 0 12px 16px;
+    font-size: 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+}
+
+table.table1 td {
+    padding: 12px 0 12px 16px;
+    font-size: 14px;
+}
+
+table.table1 td a {
+    color: var(--main-blue);
+}
+
+table.table1 tbody td i.bx {
+    font-size: 14px;
+    object-fit: cover;
+}
+
+table.table1 tbody td img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid var(--dark-grey);
+}
+
+table.table1 tbody td:last-child:hover {
+    color: var(--main-blue);
+    text-decoration: underline;
+}
+
+table.table1 tbody tr:nth-child(even) {
+    background-color: var(--grey);
+}
+
+/*
+*  ----------------- End of Table 1 ------------------------
+*/
+
+
+
+/*
+*
+*/
+.custom-card1 {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.custom-card1>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.custom-card1 .container {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.custom-card1 .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.custom-card1 .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.custom-card1 .header .bx {
+    cursor: pointer;
+}
+
+/*
+*
+*/
+
+/*
+*  ----------- Input[type=number] ---------------
+*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/*
+*  --------------- End of Input[type=number] --------------------
+*/
+
+/*
+*  ----------------- Pagination ---------------------
+*/
+.pagination {
+    display: flex;
+    padding: 12px 0 0 0;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.pagination .pagination-number {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination .pagination-number:hover {
+    cursor: pointer;
+}
+
+.pagination .pagination-number .page {
+    font-size: 16px;
+}
+
+.pagination .pagination-number .page i {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pagination .pagination-number .page:hover {
+    text-decoration: underline;
+}
+
+.pagination .pagination-number .page-number {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.pagination .pagination-number .page-number .active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    color: #000000 !important;
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+}
+.pagination .pagination-number .page-number li a {
+    color: #ffffff !important;
+}
+
+.pagination .pagination-number .page li a {
+    color: #ffffff !important;
+}
+
+.pagination .pagination-number .page li {
+    color: #ffffff !important;
+}
+
+.pagination .pagination-number .page-number li {
+    color: #ffffff !important;
+}
+/*
+*  ----------------- End of Pagination -----------------------------
+*/
+
+/*
+* -------------------- Search Field ------------------------------
+*/
+.search-field {
+    display: flex;
+    border-radius: 8px;
+    border: 1px solid var(--dark-grey);
+    background: #FFFFFF;
+}
+
+.search-field i {
+    padding: 5px 5px 5px 5px;
+    color: var(--dark-grey);
+    font-size: 1.6rem;
+}
+
+.search-field input {
+    border: none;
+    border-radius: 8px;
+    width: 250px;
+    font-size: 16px;
+    padding: 0 5px 0 7px;
+    color: var(--dark);
+    outline: none;
+}
+/*
+*  --------------------- End of Search Field -------------------
+*/
+
+/*
+*  -------------------- Dropdown Category -------------------------------------
+*/
+.dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown .select {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    color: #000000 !important;
+    border: 1px solid var(--dark-grey);
+    padding: 0px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown .select span {
+    font-size: 16px;
+    color: #000000 !important;
+    font-weight: 500;
+}
+
+.dropdown .select-clicked {
+    border: 1px solid var(--dark-grey);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown .select:hover {
+    background-color: var(--light-primary);
+}
+
+.dropdown .select .caret {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    justify-content: center;
+    color: #000000 !important;
+}
+
+.dropdown .select .caret i {
+    font-size: 22px;
+}
+
+.dropdown .select .selected {
+    color: #000000 !important;
+}
+
+.dropdown .select .caret-rotate {
+    transform: rotate(180deg);
+    transition: 0.3s all ease;
+}
+
+.dropdown ul.menu {
+    position: absolute;
+    width: 100%;
+    display: none;
+    margin: 0;
+    border: 1px solid var(--dark-grey);
+    background: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown ul.menu li {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 16px;
+    transition: 0.3s;
+    color: #000000 !important;
+}
+
+.dropdown ul.menu li:hover {
+    background-color: var(--light-primary);
+}
+
+.dropdown ul.menu-open {
+    display: block;
+    opacity: 1;
+}
+/*
+* ---------------------- End of Dropdown -----------------------------------
+*/
+
+/*
+* -----------Success Message--------------
+*/
+.success-message {
+    position: absolute;
+    z-index: 1700;
+    background: var(--light);
+    border-radius: 2px;
+    width: 360px;
+    height: 60px;
+    align-items: center;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex;
+    right: 30px;
+    top: 0;
+}
+
+.success-message .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-green {
+    border-left: 8px solid var(--success);
+}
+
+.success-message i {
+    margin: 0 20px;
+    font-size: 36px;
+    color: var(--success);
+}
+
+.success-message span {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.success-message span.message {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--dark-grey);
+}
+
+.success-message::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--success);
+    animation: anim 3s linear forwards;
+}
+/*
+* ------------ End of Success Message -------------------
+*/
+
+/*
+* --------------- Warning Message -----------------------
+*/
+.warning-message {
+    position: absolute;
+    z-index: 1700;
+    background: var(--light);
+    border-radius: 2px;
+    width: 360px;
+    height: 60px;
+    align-items: center;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex;
+    right: 30px;
+    top: 0;
+}
+
+.warning-message .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-yellow {
+    border-left: 8px solid var(--warning);
+}
+
+.warning-message i {
+    margin: 0 20px;
+    font-size: 36px;
+    color: var(--warning);
+}
+
+.warning-message span {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.warning-message span.message {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--dark-grey);
+}
+
+.warning-message::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--warning);
+    animation: anim 3s linear forwards;
+}
+
+/*
+* -------------- End of Error Message -----------------------
+*/
+
+
+/*
+* --------------- Error Message -----------------------
+*/
+.error-message {
+    position: absolute;
+    z-index: 1700;
+    background: var(--light);
+    border-radius: 2px;
+    width: 360px;
+    height: 60px;
+    align-items: center;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex;
+    right: 30px;
+    top: 0;
+}
+
+.error-message .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-red {
+    border-left: 8px solid var(--danger);
+}
+
+.error-message i {
+    margin: 0 20px;
+    font-size: 36px;
+    color: var(--danger);
+}
+
+.error-message span {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.error-message span.message {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--dark-grey);
+}
+
+.error-message::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--danger);
+    animation: anim 3s linear forwards;
+}
+/*
+* -------------- End of Error Message -----------------------
+*/
+
+/*
+*  ----------------- Validation Error Message -------------------
+*/
+.validation-error-message {
+    color: var(--danger);
+}
+/*
+* ------------------ End of Validation Error Message -------------------------
+*/
+
+/*
+* ------------- Message Animation ----------------------
+*/
+@keyframes anim {
+    100% {
+        width: 0;
+    }
+}
+/* ------------------------------------------------------
+
+/*
+* -------------------- Delete Confirmation Pop Up -----------------------
+*/
+.delete-confirmation {
+    width: 600px;
+    background: var(--light-warning);
+    border-radius: 10px;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    padding: 0 30px 30px;
+    color: var(--dark);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.delete-confirmation i {
+    color: var(--warning);
+    font-size: 100px;
+    margin-top: -50px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete-confirmation h1 {
+    border-bottom: 1px solid var(--dark-grey);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.delete-confirmation h3 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.delete-confirmation .button {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.delete-confirmation button {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: var(--danger);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.delete-confirmation button:hover {
+    transform: scale(1.02);
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+/*
+* ----------------------- End of Delete Confirmation Pop Up -----------------------
+*/
+
+/*---------- Dashboard Page ----------*/
+.dashboard main .header .left .breadcrumb {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+}
+
+.dashboard main .header .left .breadcrumb li {
+    color: var(--primary);
+}
+
+.dashboard main .header .left .breadcrumb li a {
+    color: var(--primary);
+    pointer-events: none;
+}
+
+.dashboard main .header .left .breadcrumb li a.active {
+    color: var(--light-primary);
+    pointer-events: none;
+}
+
+.dashboard main .header .report {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 36px;
+    background: var(--primary);
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    font-weight: 500;
+}
+
+.dashboard main .insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 36px;
+}
+
+.dashboard main .insights li {
+    padding: 24px;
+    background: var(--default);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+}
+
+.dashboard main .insights li .bx {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard main .insights li:nth-child(1) .bx {
+    background: var(--primary);
+    color: var(--dark);
+}
+
+.dashboard main .insights li:nth-child(2) .bx {
+    background: var(--primary);
+    color: var(--dark);
+}
+
+.dashboard main .insights li:nth-child(3) .bx {
+    background: var(--primary);
+    color: var(--dark);
+}
+
+.dashboard main .insights li .info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.dashboard main .insights li .info p {
+    color: var(--primary);
+}
+
+.dashboard main .bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.dashboard main .bottom-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+}
+
+.dashboard main .bottom-section .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.dashboard main .bottom-section .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.dashboard main .bottom-section .header .bx {
+    cursor: pointer;
+}
+
+.dashboard main .bottom-section .orders {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.dashboard main .bottom-section .orders table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard main .bottom-section .orders table .bx {
+    font-size: 1.7rem;
+}
+
+.dashboard main .bottom-section .orders table th {
+    padding-bottom: 12px;
+    font-size: 13px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+}
+
+.dashboard main .bottom-section .orders table td {
+    padding: 16px 0;
+}
+
+.dashboard main .bottom-section .orders table tr td:first-child {
+    display: flex;
+    align-items: center;
+    grid-gap: 12px;
+    padding-left: 6px;
+}
+
+.dashboard main .bottom-section .orders table td i {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dashboard main .bottom-section .orders table tbody tr {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dashboard main .bottom-section .orders table tbody tr:hover {
+    background: var(--grey);
+}
+
+.dashboard main .bottom-section .orders table tr td .status {
+    font-size: 10px;
+    padding: 6px 16px;
+    color: #ffffff !important;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.dashboard main .bottom-section .orders table tr td .status.completed {
+    background: var(--success);
+}
+
+.dashboard main .bottom-section .orders table tr td .status.process {
+    background: var(--primary);
+}
+
+.dashboard main .bottom-section .orders table tr td .status.pending {
+    background: var(--warning);
+}
+
+.dashboard main .bottom-section .reminders {
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+
+.dashboard main .bottom-section .reminders .task-list {
+    width: 100%;
+}
+
+.dashboard main .bottom-section .reminders .task-list li {
+    width: 100%;
+    margin-bottom: 16px;
+    background: var(--grey);
+    padding: 14px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard main .bottom-section .reminders .task-list li .task-title {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard main .bottom-section .reminders .task-list li .task-title p {
+    margin-left: 6px;
+}
+
+.dashboard main .bottom-section .reminders .task-list li .bx {
+    cursor: pointer;
+}
+
+.dashboard main .bottom-section .reminders .task-list li.completed {
+    border-left: 10px solid var(--success);
+}
+
+.dashboard main .bottom-section .reminders .task-list li.not-completed {
+    border-left: 10px solid var(--danger);
+}
+
+.dashboard main .bottom-section .reminders .task-list li:last-child {
+    margin-bottom: 0;
+}
+/*---------- End of Dashboard Page ---------- */
+
+
+
+/*
+* Staff Accout Page -------------------------
+*/
+.staff-account-index main .header .create {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 36px;
+    background: var(--primary);
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    font-weight: 500;
+}
+
+.staff-account-index main .header .create:hover {
+    transform: scale(1.02);
+}
+
+.staff-account-create main .form-section form .create-form {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 34px 34px;
+    overflow-x: auto;
+    border: 1px solid #D3D3D3;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.staff-account-create main .form-section form .create-form label {
+    color: #ffffff !important;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.staff-account-create main .form-section form .create-form label::after {
+    content: " *";
+    font-size: 16px;
+    color: var(--danger);
+}
+
+.staff-account-create main .form-section form .create-form input {
+    width: 100%;
+    height: 36px;
+    border-radius: 7px;
+    font-size: 16px;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid var(--dark-grey);
+}
+
+.staff-account-create main .form-section form  .button {
+    display: flex;
+    margin-top: 20px;
+}
+
+.staff-account-create main .form-section form .button input {
+    display: flex;
+    width: 20%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.staff-account-create main .form-section form .button a {
+    display: flex;
+    margin-left: 10px;
+    width: 20%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.staff-account-create main .form-section form .button input[type="submit"]:hover, .staff-account-create main .form-section form .button a:hover {
+    transform: scale(1.02);
+}
+
+.staff-account-create main .bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 36px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.staff-account-create main .bottom-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.staff-account-create main .bottom-section .id {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.staff-account-create main .bottom-section .id .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.staff-account-create main .bottom-section .id .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.staff-account-create main .bottom-section .id .header .bx {
+    cursor: pointer;
+}
+
+.staff-account-show main .show-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.staff-account-show main .show-section .user {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.staff-account-show main .show-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.staff-account-show main .show-section .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--dark-grey);
+}
+
+.staff-account-show main .show-section .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.staff-account-show main .show-section .header .edit-button {
+    display: flex;
+    height: 36px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.staff-account-show main .show-section .header .edit-button i {
+    font-size: 16px;
+    color: var(--main-blue);
+    align-items: center;
+    justify-content: center;
+}
+
+.staff-account-show main .show-section .header .edit-button span {
+    color: var(--main-blue);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.staff-account-show main .show-section .header .edit-button:hover {
+    transform: scale(1.02);
+}
+
+.staff-account-show main .show-section .user .user-data {
+    display: flex;
+}
+
+.staff-account-show main .show-section .user .user-data .label, .staff-account-show main .show-section .user .user-data .data {
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-account-show main .show-section .user .user-data .label span {
+    margin-bottom: 30px;
+    font-size: 16px;
+    text-align: end;
+}
+
+.staff-account-show main .show-section .user .user-data .data span {
+    margin-bottom: 30px;
+    font-size: 16px;
+    text-align: start;
+}
+
+.staff-account-show main .show-section .user .user-data .label span::after {
+    content: " :";
+    margin-right: 20px;
+}
+
+.staff-account-show main .button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.staff-account-show main form .button button, .staff-account-show main form .button a {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 36px;
+    width: 15%;
+    border: none;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.staff-account-show main form .button button:hover, .staff-account-show main form .button a:hover {
+    transform: scale(1.02);
+}
+
+.staff-account-edit main .edit-section {
+    margin-top: 10px;
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.staff-account-edit main .edit-section .user .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--dark-grey);
+}
+
+.staff-account-edit main .edit-section .user .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.staff-account-edit main .edit-section .form-staff-update form {
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .input-section {
+    display: flex;
+    width: 100%;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .input-section .label {
+    display: flex;
+    width: 10%;
+    align-items: end;
+    flex-direction: column;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .input-section .label span {
+    padding: 15px 5px 0px 5px;
+    width: 100%;
+    font-size: 16px;
+    align-items: end;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .label span::after {
+    content: " :";
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .input-section .input {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .input-section .input input {
+    height: 32px;
+    padding: 15px 10px 15px 10px;
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .input input:disabled {
+    background: var(--dark-grey);
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .button-section {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .button-section .button {
+    display: flex;
+    gap: 10px;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .button-section .button input,
+.staff-account-edit main .edit-section .form-staff-update form .button-section .button a {
+    display: flex;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .button-section .button a {
+    background: var(--danger);
+}
+
+.staff-account-edit main .edit-section .form-staff-update form .button-section .button input:hover,
+.staff-account-edit main .edit-section .form-staff-update form .button-section .button a:hover {
+    transform: scale(1.02);
+}
+/*
+*   End of Staff Account Page
+*/
+
+
+/*
+*  ----------------------- Food Menu Page --------------------
+*/
+.food-menu-index main .header .create {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 36px;
+    background: var(--primary);
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    font-weight: 500;
+}
+
+.food-menu-index main .header .create:hover {
+    transform: scale(1.02);
+}
+
+.food-menu-index main .top-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.food-menu-index main .top-section .food-menu {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.food-menu-index main .top-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.food-menu-index main .top-section .food-menu .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.food-menu-index .top-section .food-menu .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.food-menu-index main .top-section .header .bx {
+    cursor: pointer;
+}
+
+.food-menu-create main .top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.food-menu-create main .top-section form {
+    flex: 1;
+    max-width: calc(50% - 10px);
+    border-radius: 20px;
+    background: var(--light);
+    padding: 30px 30px;
+    overflow-x: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    flex-direction: column;
+    border: 1px solid var(--dark-grey);
+}
+
+.food-menu-create main .top-section form .form-add-menu {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow-x: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-direction: column;
+}
+
+.food-menu-create main .top-section form .form-add-menu .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.food-menu-create main .top-section form .form-add-menu .header h4 {
+    color: #ffffff !important;
+    margin: auto;
+    font-size: 20px;
+    font-weight: 700;
+
+}
+
+.food-menu-create main .top-section form .form-add-menu span.star {
+    color: #ffffff !important;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.food-menu-create main .top-section form .form-add-menu span.star::after {
+    content: "*";
+    color: var(--danger);
+}
+
+.food-menu-create main .top-section form .form-add-menu input[type="text"] {
+    height: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: #000000 !important;
+    outline: none;
+}
+
+.food-menu-create main .top-section form .form-add-menu .low {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.food-menu-create main .top-section form .form-add-menu .drag-area {
+    display: flex;
+    height: 350px;
+    border: 1px dashed var(--dark-grey);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 0px;
+    cursor: pointer;
+}
+
+.food-menu-create main .top-section form .form-add-menu .drag-area i {
+    font-size: 32px;
+    color: var(--dark-grey);
+}
+
+.food-menu-create main .top-section form .form-add-menu .drag-area h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
+.food-menu-create main .top-section form .form-add-menu .drag-area img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.food-menu-create main .top-section form .form-category {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow-x: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-direction: column;
+}
+
+.food-menu-create main .top-section form .form-category .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.food-menu-create main .top-section form .form-category .header h4 {
+    color: #ffffff !important;
+    margin: auto;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.food-menu-create main .top-section form .button-menu, .food-menu-create main .top-section form .button-category {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.food-menu-create main .top-section form .button-menu input, .food-menu-create main .top-section form .button-category input {
+    display: flex;
+    width: 25%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.food-menu-create main .top-section form a {
+    display: flex;
+    margin-left: 10px;
+    width: 25%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.food-menu-create main .top-section form .form-category span {
+    color: #ffffff !important;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.food-menu-create main .top-section form .form-category span::after {
+    content: "*";
+    color: var(--danger);
+}
+
+.food-menu-create main .top-section form .form-category input[type="text"] {
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: #000000 !important;
+    outline: none;
+}
+
+.food-menu-create main .top-section form input[type="submit"]:hover, .food-menu-create main .top-section form a:hover {
+    transform: scale(1.02);
+}
+
+.food-menu-create main .bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: #ffffff !important;
+}
+
+.food-menu-create main .bottom-section .food-category {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.food-menu-create main .bottom-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.food-menu-create main .bottom-section .food-category .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.food-menu-create .bottom-section .food-category .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.food-menu-create main .bottom-section .food-category .header .bx {
+    cursor: pointer;
+}
+
+.food-menu-show main .show-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.food-menu-show main .show-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.food-menu-show main .show-section .container {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 500;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 48px;
+    gap: 50px;
+}
+
+.food-menu-show main .show-section .container .image {
+    border-radius: 50%;
+    padding: 12px 0;
+    background: transparent;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.food-menu-show main .show-section .container .image img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.food-menu-show main .show-section .container .details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.food-menu-show main .show-section .container .details h2 {
+    font-size: 58px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.food-menu-show main .show-section .container .details span {
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.food-menu-show main .show-section .container .details span.category,
+.food-menu-show main .show-section .container .details span.price {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.food-menu-show main .show-section .container .details span.description {
+    font-size: 28;
+    font-weight: 300;
+}
+
+.food-menu-show main form .button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.food-menu-show main form .button button,
+.food-menu-show main form .button a {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 36px;
+    width: 15%;
+    border: none;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.food-menu-show main form .button button:hover,
+.food-menu-show main form .button a:hover {
+    transform: scale(1.02);
+}
+
+.food-menu-edit main .edit-section form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.food-menu-edit main .edit-section form>div.container {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.food-menu-edit main .edit-section form .container {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 500;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 48px;
+    gap: 40px;
+}
+
+.food-menu-edit main .edit-section form .container .drag-area {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 350px;
+    padding: 12px 0;
+    background: transparent;
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px dashed var(--dark-grey);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.food-menu-edit main .edit-section form .container .drag-area i {
+    font-size: 32px;
+    color: var(--dark-grey);
+}
+
+.food-menu-edit main .edit-section form .container .drag-area h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
+.food-menu-edit main .edit-section form .container .drag-area img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.food-menu-edit main .edit-section form .container .details {
+    width: 100%;
+}
+
+.food-menu-edit main .edit-section form .container .details .label span {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff !important;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.food-menu-edit main .edit-section form .container .details .label input {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: #000000 !important;
+    outline: none;
+}
+
+.food-menu-edit main .edit-section form .container .details .label input.description {
+    margin-bottom: 10px;
+}
+
+.food-menu-edit main .edit-section form .container .details .label .dropdown {
+    margin-bottom: 20px;
+}
+
+.food-menu-edit main .edit-section form .container .details .label .dropdown .select span {
+    margin-bottom: 0;
+    color: #000000 !important;
+}
+
+.food-menu-edit main .edit-section form .button-section .button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.food-menu-edit main .edit-section form .button-section .button input,
+.food-menu-edit main .edit-section form .button-section .button a {
+    display: flex;
+    width: 15%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.food-menu-edit main .edit-section form .button-section .button a {
+    background: var(--danger);
+}
+
+.food-menu-edit main .edit-section form .button-section .button input:hover,
+.food-menu-edit main .edit-section form .button-section .button a:hover {
+    transform: scale(1.02);
+}
+/*---------- End of Food Menu Page ----------*/
+
+/*
+*  ---------------- Restaurant Page ----------------------
+*/
+.restaurant-index main .header .create {
+    display: flex;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 36px;
+    background: var(--primary);
+    color: #ffffff !important;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    font-weight: 500;
+}
+
+.restaurant-index main .header .create:hover {
+    transform: scale(1.02);
+}
+
+.restaurant-index main .item-section {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 24px;
+    margin-top: 24px;
+    color: var(--dark);
+}
+
+.restaurant-index main .item-section>div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: auto;
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.restaurant-index main .item-section .container .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.restaurant-index main .item-section .container .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.restaurant-index main .item-section .container .header .bx {
+    cursor: pointer;
+}
+
+.restaurant-create main .form-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.restaurant-create main .form-section .form-item-create,
+.restaurant-create main .form-section .form-category-create {
+    flex: 1;
+    max-width: calc(50% - 10px);
+    border-radius: 20px;
+    background: var(--light);
+    padding: 30px 30px;
+    overflow-x: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    flex-direction: column;
+    border: 1px solid var(--dark-grey);
+}
+
+.restaurant-create main .form-section .form-item-create form .header,
+.restaurant-create main .form-section .form-category-create form .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.restaurant-create main .form-section .form-item-create form .header h4,
+.restaurant-create main .form-section .form-category-create form .header h4 {
+    color: var(--dark);
+    margin: auto;
+    font-size: 20px;
+    font-weight: 700;
+
+}
+
+.restaurant-create main .form-section .form-item-create form .form-input,
+.restaurant-create main .form-section .form-category-create form .form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-create main .form-section .form-item-create form .form-input span,
+.restaurant-create main .form-section .form-category-create form .form-input span {
+    color: var(--dark);
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.restaurant-create main .form-section .form-item-create form .form-input span.star::after,
+.restaurant-create main .form-section .form-category-create form .form-input span::after {
+    content: "*";
+    color: var(--danger);
+}
+
+.restaurant-create main .form-section .form-item-create form .form-input input,
+.restaurant-create main .form-section .form-category-create form .form-input input {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: var(--dark);
+    outline: none;
+}
+
+.restaurant-create main .form-section .form-item-create form .form-input .dropdown {
+    margin-bottom: 20px;
+}
+
+.restaurant-create main .form-section .form-item-create form .form-input .dropdown .select span {
+    margin-bottom: 0;
+    color: #000000 !important;
+}
+
+.restaurant-create main .form-section .form-item-create form .button,
+.restaurant-create main .form-section .form-category-create form .button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.restaurant-create main .form-section .form-item-create form .button input,
+.restaurant-create main .form-section .form-category-create form .button input {
+    display: flex;
+    width: 30%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.restaurant-create main .form-section .form-item-create form .button a,
+.restaurant-create main .form-section .form-category-create form .button a {
+    display: flex;
+    width: 30%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.restaurant-create main .form-section .form-item-create form .button input:hover,
+.restaurant-create main .form-section .form-category-create form .button input:hover,
+.restaurant-create main .form-section .form-item-create form a:hover,
+.restaurant-create main .form-section .form-category-create form .button a:hover {
+    transform: scale(1.02);
+}
+
+.restaurant-create main .table-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.restaurant-create main .table-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.restaurant-create main .table-section .item-category {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.restaurant-create main .table-section .item-category .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.restaurant-create main .table-section .item-category .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.restaurant-create main .table-section .item-category .header .bx {
+    cursor: pointer;
+}
+
+.restaurant-show main .show-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.restaurant-show main .show-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px 24px 5px 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.restaurant-show main .show-section .container {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.restaurant-show main .show-section .container .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--dark-grey);
+}
+
+.restaurant-show main .show-section .container .header h3 {
+    padding-left: 14px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.restaurant-show main .show-section .container .details {
+    display: flex;
+
+}
+
+.restaurant-show main .show-section .container .details .label,
+.restaurant-show main .show-section .container .details .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.restaurant-show main .show-section .container .details .label span {
+    padding: 16px;
+    font-size: 16px;
+    text-align: end;
+}
+
+.restaurant-show main .show-section .container .details .data span {
+    padding: 16px 16px 16px 0;
+    font-size: 16px;
+    text-align: start;
+}
+
+.restaurant-show main .show-section .container .details .label span::after {
+    content: " :";
+}
+
+.restaurant-show main form .button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.restaurant-show main form .button button,
+.restaurant-show main form .button a {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 36px;
+    width: 15%;
+    border: none;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.restaurant-show main form .button button:hover,
+.restaurant-show main form .button a:hover {
+    transform: scale(1.02);
+}
+
+.restaurant-edit main form .edit-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.restaurant-edit main form .edit-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px 24px 5px 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.restaurant-edit main form .edit-section .container {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.restaurant-edit main form .edit-section .container .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--dark-grey);
+}
+
+.restaurant-edit main form .edit-section .container .header h3 {
+    padding-left: 14px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.restaurant-edit main form .edit-section .container .details {
+    display: flex;
+}
+
+.restaurant-edit main form .edit-section .container .details .label,
+.restaurant-edit main form .edit-section .container .details .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.restaurant-edit main form .edit-section .container .details .label span {
+    padding: 16px;
+    font-size: 16px;
+    text-align: end;
+}
+
+.restaurant-edit main form .edit-section .container .details .input input {
+    height: 32px;
+    padding: 15px 10px 15px 10px;
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.restaurant-edit main form .edit-section .container .details .input .dropdown {
+    margin-bottom: 20px;
+}
+
+.restaurant-edit main form .edit-section .container .details .label span::after {
+    content: " :";
+}
+
+.restaurant-edit main form .button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.restaurant-edit main form .button input {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 36px;
+    width: 15%;
+    border: none;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.restaurant-edit main form .button a {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 36px;
+    width: 15%;
+    border: none;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.restaurant-edit main form .button input:hover,
+.restaurant-edit main form .button a:hover {
+    transform: scale(1.02);
+}
+/*
+*  ---------------- End of Restaurant Page --------------------------
+*/
+
+
+/*
+*  ---------------------- Partnership Page -----------------------
+*/
+.partnership-index main  .header .create {
+    display: flex;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 36px;
+    background: var(--primary);
+    color: #ffffff !important;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    font-weight: 500;
+}
+
+.partnership-index main .header .create:hover {
+    transform: scale(1.02);
+}
+
+.partnership-index main .bottom-section {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 24px;
+    margin-top: 24px;
+    color: var(--dark);
+}
+
+.partnership-index main .bottom-section .container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: auto;
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.partnership-index main .bottom-section .container:hover {
+    transform: scale(1.02);
+}
+
+.partnership-index main .bottom-section .container .partner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+}
+
+.partnership-index main .bottom-section .container .partner .display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.partnership-index main .bottom-section .container .partner .display img {
+    cursor: pointer;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.partnership-index main .bottom-section .container .partner .display .name {
+    display: flex;
+    flex-direction: column;
+}
+
+.partnership-index main .bottom-section .container .partner .display .name .details {
+    display: flex;
+}
+
+.partnership-index main .bottom-section .container .partner .display .name .details .label,
+.partnership-index main .bottom-section .container .partner .display .name .details .output {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--dark-grey);
+    gap: 4px;
+}
+
+.partnership-index main .bottom-section .container .partner .display .name .details .label span {
+    margin-right: 20px;
+}
+
+.partnership-index main .bottom-section .container .partner .display .name .details .label span::after {
+    content: ":";
+}
+
+.partnership-index main .bottom-section .container .partner .display .name .details .output span {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.partnership-index main .bottom-section .container .partner .action {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.partnership-index main .bottom-section .container .partner .action a {
+    color: var(--main-blue);
+    background: transparent;
+    text-align: center;
+    cursor: pointer;
+}
+
+.partnership-index main .bottom-section .container .partner .action a i {
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    margin-right: 5px;
+}
+
+.partnership-index main .bottom-section .container .partner .action a i:hover,
+.partnership-index main .bottom-section .container .partner .action form button:hover {
+    cursor: pointer;
+}
+
+.partnership-index main .bottom-section .container .partner .action a span:hover,
+.partnership-index main .bottom-section .container .partner .action form button span:hover {
+    text-decoration: underline;
+}
+
+.partnership-index main .bottom-section .container .partner .action form button {
+    color: var(--danger);
+    border: none;
+    text-align: center;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.partnership-index main .bottom-section .container .partner .action form button i {
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.partnership-create main .create-section form,
+.partnership-edit main .edit-section form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.partnership-create main .create-section form>div.container,
+.partnership-edit main .edit-section form>div.container {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.partnership-create main .create-section form .container,
+.partnership-edit main .edit-section form .container {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 500;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 48px;
+    gap: 40px;
+}
+
+.partnership-create main .create-section form .container .drag-area,
+.partnership-edit main .edit-section form .container .drag-area {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 350px;
+    padding: 12px 0;
+    background: transparent;
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px dashed var(--dark-grey);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.partnership-create main .create-section form .container .drag-area i,
+.partnership-edit main .edit-section form .container .drag-area i  {
+    font-size: 32px;
+    color: var(--dark-grey);
+}
+
+.partnership-create main .create-section form .container .drag-area h2,
+.partnership-edit main .edit-section form .container .drag-area h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
+.partnership-create main .create-section form .container .details,
+.partnership-edit main .edit-section form .container .details {
+    width: 100%;
+}
+
+.partnership-create main .create-section form .container .details .data span,
+.partnership-edit main .edit-section form .container .details .data span {
+    display: flex;
+    flex-direction: column;
+    color: var(--dark);
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.partnership-create main .create-section form .container .details .data input,
+.partnership-edit main .edit-section form .container .details .data input {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: var(--dark);
+    outline: none;
+}
+
+.partnership-create main .create-section form .container .details .data input[type="date"],
+.partnership-edit main .edit-section form .container .details .data input[type="date"] {
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.partnership-create main .create-section form .container .details .data input[type="date"]::-webkit-calendar-picker-indicator,
+.partnership-edit main .edit-section form .container .details .data input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    color: transparent;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    position: absolute;
+}
+
+.partnership-create main .create-section form .button-section .button,
+.partnership-edit main .edit-section form .button-section .button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.partnership-create main .create-section form .button-section .button input,
+.partnership-create main .create-section form .button-section .button a,
+.partnership-edit main .edit-section form .button-section .button input,
+.partnership-edit main .edit-section form .button-section .button a {
+    display: flex;
+    width: 15%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.partnership-create main .create-section form .button-section .button a,
+.partnership-edit main .edit-section form .button-section .button a {
+    background: var(--danger);
+}
+
+.partnership-create main .create-section form .button-section .button input:hover,
+.partnership-create main .create-section form .button-section .button a:hover,
+.partnership-edit main .edit-section form .button-section .button input:hover,
+.partnership-edit main .edit-section form .button-section .button a:hover {
+    transform: scale(1.02);
+}
+/*
+* ---------------------- End of Partnership Page ------------------------
+*/
+
+/*
+*  ---------------------- Promotion Discount Page ------------------------
+*/
+.promotion-discount-index main .header .create {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 36px;
+    background: var(--primary);
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    font-weight: 500;
+}
+
+.promotion-discount-index main .header .create:hover {
+    transform: scale(1.02);
+}
+
+.promotion-discount-index .index-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.promotion-discount-index .index-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.promotion-discount-index .index-section .container {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.promotion-discount-index .index-section .container .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.promotion-discount-index .index-section .container .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.promotion-discount-index .index-section .container .header .bx {
+    cursor: pointer;
+}
+
+.promotion-discount-create main .form-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create,
+.promotion-discount-create main .form-section .form-event-create {
+    flex: 1;
+    max-width: calc(50% - 10px);
+    border-radius: 20px;
+    background: var(--light);
+    padding: 30px 30px;
+    overflow-x: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    flex-direction: column;
+    border: 1px solid var(--dark-grey);
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .header,
+.promotion-discount-create main .form-section .form-event-create form .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .header h4,
+.promotion-discount-create main .form-section .form-event-create form .header h4 {
+    color: var(--dark);
+    margin: auto;
+    font-size: 20px;
+    font-weight: 700;
+
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input,
+.promotion-discount-create main .form-section .form-event-create form .form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input span,
+.promotion-discount-create main .form-section .form-event-create form .form-input span {
+    color: var(--dark);
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input span.star::after,
+.promotion-discount-create main .form-section .form-event-create form .form-input span::after {
+    content: "*";
+    color: var(--danger);
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input input,
+.promotion-discount-create main .form-section .form-event-create form .form-input input {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: var(--dark);
+    outline: none;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input input[type="datetime-local"],
+.promotion-discount-create main .form-section .form-event-create form .form-input input[type="date"] {
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+.promotion-discount-create main .form-section .form-event-create form .form-input input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    color: transparent;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    position: absolute;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input .dropdown {
+    margin-bottom: 20px;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .form-input .dropdown .select span {
+    margin-bottom: 0;
+    color: #000000 !important;
+}
+
+.promotion-discount-create main .form-section .form-event-create form .form-input .drag-area {
+    display: flex;
+    height: 200px;
+    border: 1px dashed var(--dark-grey);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 0px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.promotion-discount-create main .form-section .form-event-create form .form-input .drag-area i {
+    font-size: 32px;
+    color: var(--dark-grey);
+}
+
+.promotion-discount-create main .form-section .form-event-create form .form-input .drag-area h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .button,
+.promotion-discount-create main .form-section .form-event-create form .button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .button input,
+.promotion-discount-create main .form-section .form-event-create form .button input,
+.promotion-discount-create main .form-section .form-promotion-create form .button a,
+.promotion-discount-create main .form-section .form-event-create form .button a {
+    display: flex;
+    width: 30%;
+    height: 36px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .button a,
+.promotion-discount-create main .form-section .form-event-create form .button a {
+    background: var(--danger);
+}
+
+.promotion-discount-create main .form-section .form-promotion-create form .button input:hover,
+.promotion-discount-create main .form-section .form-event-create form .button input:hover,
+.promotion-discount-create main .form-section .form-promotion-create form a:hover,
+.promotion-discount-create main .form-section .form-event-create form .button a:hover {
+    transform: scale(1.02);
+}
+
+.promotion-discount-create main .table-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.promotion-discount-create main .table-section>div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.promotion-discount-create main .table-section .table-event {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.promotion-discount-create main .table-section .table-event .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.promotion-discount-create main .table-section .table-event .header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.promotion-discount-create main .table-section .table-event .header .bx {
+    cursor: pointer;
+}
+
+.promotion-discount-show main .show-section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: #ffffff !important;
+}
+
+.promotion-discount-show .show-section>div {
+    border-radius: 20px;
+    background: var(--dark);
+    padding: 24px 24px 5px 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.promotion-discount-show .show-section .coupon-design-section {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.promotion-discount-show .show-section .coupon-design-section h4 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff !important;
+    border-bottom: 1px dashed var(--dark);
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    padding: 30px 50px;
+    gap: 0;
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .left-side {
+    position: relative;
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .left-side .triangle {
+    content: "";
+    position: absolute;
+    top: 36%;
+    left: 0px;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid var(--dark);
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .left-side {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    padding: 30px 12px 30px 0px;
+    justify-content: center;
+    align-items: center;
+    background: var(--light-primary);
+    gap: 10px;
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .left-side span {
+    color: var(--dark);
+    text-align: center;
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .right-side {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 300px;
+    background: linear-gradient(135deg, #d4af37, #b8941f);
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .right-side .triangle {
+    content: "";
+    position: absolute;
+    top: 36%;
+    right: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid var(--dark);
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .right-side span.title {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .right-side span.coupon-name {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .right-side span strong {
+    font-size: 85px;
+    font-weight: 700;
+}
+
+.promotion-discount-show .show-section .coupon-design-section .design .right-side span.valid {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.promotion-discount-show main form .button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.promotion-discount-show form .button button,
+.promotion-discount-show form .button a {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 36px;
+    width: 15%;
+    border: none;
+    border-radius: 7px;
+    background: var(--danger);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.promotion-discount-show form .button button:hover,
+.promotion-discount-show form .button a:hover {
+    transform: scale(1.02);
+}
+
+.promotion-discount-edit main .edit-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.promotion-discount-edit main .edit-section form>div.container {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.promotion-discount-edit main .edit-section form .container {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.promotion-discount-edit main .edit-section form .container .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--dark-grey);
+}
+
+.promotion-discount-edit main .edit-section form .container .header h3 {
+    padding-left: 14px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.promotion-discount-edit main .edit-section form .container .details .data {
+    display: flex;
+    flex-direction: column;
+}
+
+.promotion-discount-edit main .edit-section form .container .details .data span {
+    color: var(--dark);
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.promotion-discount-edit main .edit-section form .container .details .data input {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: var(--dark);
+    outline: none;
+}
+
+.promotion-discount-edit main .edit-section form .container .details .data .dropdown {
+    margin-bottom: 20px;
+}
+
+.promotion-discount-edit main .edit-section form .container .details .data input[type="datetime-local"] {
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.promotion-discount-edit main .edit-section form .container .details .data input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    color: transparent;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    position: absolute;
+}
+
+.promotion-discount-edit main .edit-section form .button-section .button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.promotion-discount-edit main .edit-section form .button-section input,
+.promotion-discount-edit main .edit-section form .button-section a {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 36px;
+    width: 15%;
+    border: none;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 16px;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.promotion-discount-edit main .edit-section form .button-section a {
+    background: var(--danger);
+}
+
+.promotion-discount-edit main .edit-section form .button-section input:hover,
+.promotion-discount-edit main .edit-section form .button-section a:hover {
+    transform: scale(1.02);
+}
+/*
+*  ----------------------- End of Promotion Discount Page -------------------------
+*/
+
+/*
+*  ----------------------------- Profile Settings ----------------------------------
+*/
+.admin-profile-edit main .profile-section form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 10px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.admin-profile-edit main .profile-section form>div.container {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.2);
+}
+
+.admin-profile-edit main .profile-section form .container {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 500;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 48px;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.admin-profile-edit main .profile-section form .container .details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.admin-profile-edit main .profile-section form .container .details h3,
+.admin-profile-edit main .profile-section form .container .password-details h3 {
+    color: var(--dark);
+}
+
+.admin-profile-edit main .profile-section form .container .details span.text,
+.admin-profile-edit main .profile-section form .container .password-details span.text {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.admin-profile-edit main .profile-section form .container .details span:nth-child(n+2),
+.admin-profile-edit main .profile-section form .container .password-details span:nth-child(n+2) {
+    color: var(--dark);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.admin-profile-edit main .profile-section form .container .details input,
+.admin-profile-edit main .profile-section form .container .password-details input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 0 10px;
+    border: 1px solid var(--dark-grey);
+    color: var(--dark);
+    outline: none;
+}
+
+.admin-profile-edit main .profile-section form .container .details input[type="submit"],
+.admin-profile-edit main .profile-section form .container .password-details input[type="submit"] {
+    width: 20%;
+    background: var(--primary);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff !important;
+    cursor: pointer;
+    border: none;
+    border-radius: 7px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.admin-profile-edit main .profile-section form .container .details input[type="submit"]:hover,
+.admin-profile-edit main .profile-section form .container .password-details input[type="submit"]:hover {
+    background: var(--primary);
+    opacity: 0.9;
+}
+
+.admin-profile-edit main .profile-section form .container .password-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+/*
+*  ------------------------------- End of Profile Settings -----------------------------
+*/
+
+/*
+*  Responsive Page
+*/
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .dashboard {
+        width: calc(100% - 60px);
+        left: 200px;
+    }
+
+    .sidebar .side-menu li .logout-button {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .dashboard main .insights {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard main .bottom-section .header {
+        min-width: 340px;
+    }
+
+    .dashboard main .bottom-section .orders table {
+        max-width: 340px;
+    }
+
+    .dashboard main .bottom-section .reminders .task-list {
+        max-width: 340px;
+    }
+}
+
+/* Input fields specific styling - black text */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+textarea,
+select {
+    color: #000000 !important;
+}

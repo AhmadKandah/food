@@ -1,0 +1,1311 @@
+:root {
+    --default: #1a1a1a;
+    --light: #2d2d2d;
+    --primary: #D1AB55;
+    --light-primary: #B8943F;
+    --grey: #424242;
+    --dark-grey: #757575;
+    --light-grey: #616161;
+    --dark: #ffffff;
+    --danger: #D1AB55;
+    --light-danger: #B8943F;
+    --warning: #D1AB55;
+    --light-warning: #B8943F;
+    --success: #D1AB55;
+    --light-success: #B8943F;
+    --glow: #D1AB55;
+    --light-glow: #B8943F;
+    --main-blue: #D1AB55;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    background: var(--default);
+    position: relative;
+    color: var(--dark);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.bx {
+    font-size: 1.7rem;
+}
+
+section {
+    position: relative;
+    width: calc(100% - 300px);
+    right: 0;
+    left: 300px;
+    transition: all 0.3s ease;
+    background: var(--default);
+    min-height: 100vh;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: hidden;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+table th {
+    color: #000000;
+    background: var(--primary);
+    padding: 12px 0 12px 16px;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0px 0px 4px -4px rgba(209, 171, 85, 0.5);
+    font-weight: 700;
+}
+
+table td {
+    text-align: center;
+    padding: 12px 0 12px 16px;
+    font-size: 16px;
+    color: #000000;
+    background: var(--grey);
+}
+
+table td a {
+    color: var(--main-blue);
+}
+
+table td a span:hover {
+    text-decoration: underline;
+}
+
+table td i.bx {
+    margin-right: 8px;
+    font-size: 16px;
+    object-fit: cover;
+    color: #ffffff;
+}
+
+table tbody tr {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+    transform: scale(1.02);
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--light);
+}
+
+table tbody tr:nth-child(even) td {
+    color: #000000;
+}
+
+table tbody tr:hover {
+    background-color: var(--primary) !important;
+}
+
+table tbody tr:hover td {
+    color: #000000 !important;
+}
+/*
+*  --------------------- Main ------------------------------
+*/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--light);
+    width: 300px;
+    height: 100%;
+    z-index: 2000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+    padding: 16px;
+    border-right: 2px solid var(--primary);
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar.close {
+    width: 80px;
+}
+
+.sidebar .content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .content ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.sidebar .content ul a.logo {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+}
+
+.sidebar .content ul a.logo img {
+    width: 20%;
+    height: 80%;
+}
+
+.sidebar .content ul a.logo span {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.sidebar .content li:nth-child(n+2),
+.sidebar .content li.logout {
+    height: 50px;
+    cursor: pointer;
+}
+
+.sidebar .content li.active {
+    border-left: 5px solid var(--glow);
+}
+
+.sidebar .content li.active a {
+    color: var(--glow);
+}
+
+.sidebar .content li.active a i {
+    color: var(--glow);
+}
+
+.sidebar .content li a,
+.sidebar .content li.logout form {
+    display: flex;
+    height: 100%;
+    color: #ffffff !important;
+    gap: 5px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar.close .content li a,
+.sidebar.close .content li.logout form {
+    width: calc(100% - (10px * 2));
+    transition: all 0.3s ease;
+}
+
+.sidebar .content li.logout button {
+    display: flex;
+    color: var(--danger);
+    background: transparent;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.sidebar .content li a i,
+.sidebar .content li.logout button i {
+    font-size: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #ffffff;
+}
+
+.sidebar .content li a span,
+.sidebar .content li.logout button span {
+    font-size: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar .content li:nth-child(n+2):hover,
+.sidebar .content li.logout:hover {
+    background: var(--light-glow);
+}
+
+.topbar {
+    position: relative;
+    top: 0;
+    left: 300px;
+    width: calc(100% - 300px);
+    right: 0;
+    background: var(--light);
+    height: 80px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 12px rgba(209, 171, 85, 0.4);
+}
+
+.sidebar.close~.topbar {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar .content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px 0 4px;
+}
+
+.topbar .content i {
+    font-size: 36px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.topbar .content img.user-profile {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.topbar .content .user ul {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: absolute;
+    background: var(--light);
+    align-items: flex-start;
+    border-radius: 16px;
+    right: 20px;
+    z-index: 1700;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.topbar .content .user ul.toggle-profile.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.topbar .content .user ul li {
+    display: flex;
+    width: 100%;
+}
+
+.topbar .content .user ul li a,
+.topbar .content .user ul li button {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    padding: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--dark);
+    gap: 10px;
+}
+
+.topbar .content .user ul li:first-child > a {
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+}
+
+.topbar .content .user ul li a i,
+.topbar .content .user ul li button i {
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.topbar .content .user ul li a span,
+.topbar .content .user ul li button span {
+    font-size: 14px;
+    color: var(--dark);
+}
+
+.topbar .content .user ul li form {
+    width: 100%;
+}
+
+.topbar .content .user ul li button {
+    border: none;
+    background: transparent;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.topbar .content .user ul li a:hover,
+.topbar .content .user ul li button:hover {
+    background: var(--dark-grey);
+}
+/*
+*  ----------------------- End of Main ------------------------
+*/
+
+/*
+* -----------Success Message--------------
+*/
+.success-message {
+    position: absolute;
+    z-index: 1700;
+    background: var(--light);
+    border-radius: 8px;
+    width: 360px;
+    height: 60px;
+    align-items: center;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(209, 171, 85, 0.4);
+    padding: 20px;
+    display: flex;
+    right: 30px;
+    top: 0;
+    border: 1px solid var(--primary);
+}
+
+.success-message .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-green {
+    border-left: 8px solid var(--success);
+}
+
+.success-message i {
+    margin: 0 20px;
+    font-size: 36px;
+    color: var(--success);
+}
+
+.success-message span {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.success-message span.message {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--dark-grey);
+}
+
+.success-message::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--success);
+    animation: anim 3s linear forwards;
+}
+/*
+* ------------ End of Success Message -------------------
+*/
+
+/*
+* --------------- Error Message -----------------------
+*/
+.error-message {
+    position: absolute;
+    z-index: 1700;
+    background: var(--light);
+    border-radius: 8px;
+    width: 360px;
+    height: 60px;
+    align-items: center;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(209, 171, 85, 0.4);
+    padding: 20px;
+    display: flex;
+    right: 30px;
+    top: 0;
+    border: 1px solid var(--primary);
+}
+
+.error-message .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-red {
+    border-left: 8px solid var(--danger);
+}
+
+.error-message i {
+    margin: 0 20px;
+    font-size: 36px;
+    color: var(--danger);
+}
+
+.error-message span {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.error-message span.message {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--dark-grey);
+}
+
+.error-message::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--danger);
+    animation: anim 3s linear forwards;
+}
+/*
+* -------------- End of Error Message -----------------------
+*/
+
+/*
+*  ----------------- Validation Error Message -------------------
+*/
+.validation-error-message {
+    margin-top: 10px;
+    color: var(--danger);
+}
+
+/*
+* ------------------ End of Validation Error Message ------------------------
+*/
+
+/*
+*  ----------------------- Message Animation -------------------
+*/
+@keyframes anim {
+    100% {
+        width: 0;
+    }
+}
+/*
+*  ------------------------- End of Messsage Animation --------------------
+*/
+
+
+/*
+*  --------------------------- Dashboard -----------------------------
+*/
+.sidebar.close~section {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.dashboard main .content {
+    padding: 24px;
+}
+
+.dashboard main .content .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.dashboard main .content .statistic {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+    gap: 30px;
+}
+
+.dashboard main .content .statistic .item1,
+.dashboard main .content .statistic .item2,
+.dashboard main .content .statistic .item3 {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    background: var(--light);
+    padding: 16px;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(209, 171, 85, 0.2);
+}
+
+.dashboard main .content .statistic .item1 i,
+.dashboard main .content .statistic .item2 i,
+.dashboard main .content .statistic .item3 i {
+    font-size: 48px;
+    color: var(--primary);
+}
+
+.dashboard main .content .statistic .item1 span,
+.dashboard main .content .statistic .item2 span,
+.dashboard main .content .statistic .item3 span {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.dashboard main .content .bottom-section {
+    margin-top: 50px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(209, 171, 85, 0.3);
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+}
+
+.dashboard main .content .bottom-section .table-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    color: var(--default);
+    background: var(--primary);
+    padding: 12px 24px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.dashboard main .content .bottom-section .table-top h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000 !important;
+}
+
+.dashboard main .content .bottom-section .table-top .button {
+    display: flex;
+    gap: 10px;
+}
+
+.dashboard main .content .bottom-section .table-top .button a {
+    display: flex;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    padding: 5px 18px;
+    gap: 5px;
+}
+
+.dashboard main .content .bottom-section .table-top .button a.delete {
+    background: var(--danger);
+}
+
+.dashboard main .content .bottom-section .table-top .button a.add {
+    background: var(--success);
+}
+
+.dashboard main .content .bottom-section .table-top .button a i {
+    font-size: 20px;
+}
+
+.dashboard main .content .bottom-section .table-top .button a span {
+    font-size: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+/*
+*  ------------------------------ End of Dashboard ---------------------
+*/
+
+/*
+*  ----------------------------- Staff Profile Page --------------------------------
+*/
+.staff-profile-show main .content,
+.staff-profile-edit main .content {
+    padding: 24px;
+}
+
+.staff-profile-show main .content .header h1,
+.staff-profile-edit main .content .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.staff-profile-show main .content .container,
+.staff-profile-edit main .content .container {
+    display: flex;
+    margin-top: 30px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+    gap: 40px;
+}
+
+.staff-profile-show main .content .container img {
+    display: flex;
+    width: 300px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-profile-show main .content .container .profile-data,
+.staff-profile-edit main .content .container .profile-data {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.staff-profile-show main .content .container .profile-data span.label,
+.staff-profile-edit main .content .container .profile-data span.label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.staff-profile-show main .content .container .profile-data span.data {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.staff-profile-show main .content .button,
+.staff-profile-edit main .content .button {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.staff-profile-show main .content .button a,
+.staff-profile-edit main .content .button input[type="submit"],
+.staff-profile-edit main .content .button a {
+    display: flex;
+    width: 30%;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    background: var(--danger);
+    color: #ffffff !important;
+    padding: 5px 18px;
+    gap: 5px;
+}
+
+.staff-profile-show main .content .button a.edit,
+.staff-profile-edit main .content .button input[type="submit"] {
+    background: var(--main-blue);
+}
+
+.staff-profile-show main .content .button a.edit:hover,
+.staff-profile-edit main .content .button input[type="submit"]:hover {
+    background: var(--main-blue);
+    opacity: 0.9;
+}
+
+.staff-profile-show main .content .button a.back:hover,
+.staff-profile-edit main .content .button a.cancel:hover {
+    background: var(--danger);
+    opacity: 0.9;
+}
+
+.staff-profile-edit main .content .container .drag-area {
+    display: flex;
+    width: 400px;
+    border: 1px dashed var(--dark-grey);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 0px;
+    cursor: pointer;
+}
+
+.staff-profile-edit main .content .container .drag-area i {
+    font-size: 32px;
+    color: var(--dark-grey);
+}
+
+.staff-profile-edit main .content .container .drag-area h2 {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
+.staff-profile-edit main .content .container .profile-data input[type="text"],
+.staff-profile-edit main .content .container .profile-data input[type="email"] {
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 3px;
+    outline: none;
+    padding: 5px 12px;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+}
+
+.staff-profile-edit main .content .container .profile-data .input-radio {
+    display: flex;
+    gap: 50px;
+}
+
+.staff-profile-edit main .content .container .profile-data .input-radio label {
+    display: flex;
+    gap: 10px;
+}
+
+.staff-profile-edit main .content .container .profile-data .input-radio label span {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.staff-profile-edit main .content .button input[type="submit"] {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    color: #ffffff !important;
+}
+/*
+*  ------------------------------ End of Staff Profile Page ----------------------------------
+*/
+
+
+/*
+*  -------------------------- Customer Order Page ---------------------------
+*/
+.customer-order-index main .content {
+    padding: 24px;
+}
+
+.customer-order-index main .content .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.customer-order-index main .content .statistic {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+    gap: 30px;
+}
+
+.customer-order-index main .content .statistic .item1,
+.customer-order-index main .content .statistic .item2 {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    background: var(--light);
+    padding: 16px;
+    gap: 20px;
+}
+
+.customer-order-index main .content .statistic .item1 i,
+.customer-order-index main .content .statistic .item2 i {
+    font-size: 48px;
+}
+
+.customer-order-index main .content .statistic .item1 i {
+    color: var(--success);
+}
+
+.customer-order-index main .content .statistic .item2 i {
+    color: var(--warning);
+}
+
+.customer-order-index main .content .statistic .item1 .data,
+.customer-order-index main .content .statistic .item2 .data {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.customer-order-index main .content .statistic .item1 .data span.title,
+.customer-order-index main .content .statistic .item2 .data span.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.customer-order-index main .content .statistic .item1 .data span.data,
+.customer-order-index main .content .statistic .item2 .data span.data {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.customer-order-index main .content .statistic .item1 .data span.data {
+    color: var(--success);
+}
+
+.customer-order-index main .content .statistic .item2 .data span.data {
+    color: var(--warning);
+}
+
+.customer-order-index main .content .bottom-section {
+    margin-top: 50px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.customer-order-index main .content .bottom-section .table-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    color: var(--default);
+    background: var(--dark);
+    padding: 12px 24px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.customer-order-index main .content .bottom-section .table-top h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000 !important;
+}
+
+.customer-order-index main .content .bottom-section .table-top .button {
+    display: flex;
+    gap: 10px;
+}
+
+.customer-order-index main .content .bottom-section .table-top .button a {
+    display: flex;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    padding: 5px 18px;
+    gap: 5px;
+}
+
+.customer-order-index main .content .bottom-section .table-top .button a.add {
+    background: var(--success);
+}
+
+.customer-order-index main .content .bottom-section .table-top .button a i {
+    font-size: 20px;
+}
+
+.customer-order-index main .content .bottom-section .table-top .button a span {
+    font-size: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.customer-order-index main .content .bottom-section table td button {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+.customer-order-index main .content .bottom-section table td button i {
+    color: var(--primary);
+}
+
+.customer-order-index main .content .bottom-section table td button span {
+    color: var(--primary);
+}
+
+.customer-order-index main .content .bottom-section table td button span:hover {
+    text-decoration: underline;
+}
+
+.customer-order-create main .content {
+    padding: 24px;
+}
+
+.customer-order-create main .content .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.customer-order-create main .content form {
+    margin-top: 30px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.customer-order-create main .content form .create-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-order-create main .content form .create-section .header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.customer-order-create main .content form .create-section .header h4 {
+    color: var(--dark);
+    margin: auto;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.customer-order-create main .content form .create-section span.star {
+    color: var(--dark);
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.customer-order-create main .content form .create-section span.star::after {
+    content: "*";
+    color: var(--danger);
+}
+
+.customer-order-create main .content form .create-section input[type="text"] {
+    height: 40px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid var(--dark-grey);
+    color: var(--dark);
+    outline: none;
+}
+
+.customer-order-create main .content form .button-section {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.customer-order-create main .content form .button-section input,
+.customer-order-create main .content form .button-section a {
+    width: 20%;
+    display: flex;
+    height: 35px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: #ffffff !important;
+    padding: 5px 18px;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.customer-order-create main .content form .button-section a {
+    background: var(--danger);
+}
+
+.customer-order-create main .content form .button-section input:hover {
+    background: var(--primary);
+    opacity: 0.9;
+}
+
+.customer-order-create main .content form .button-section a:hover {
+    background: var(--danger);
+    opacity: 0.9;
+}
+
+.customer-order-create main .content .dining-table-section {
+    margin-top: 50px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.customer-order-create main .content .dining-table-section .table-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    color: var(--default);
+    background: var(--dark);
+    padding: 12px 24px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.customer-order-create main .content .dining-table-section .table-top h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000 !important;
+}
+
+.modal-edit-order {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modal-edit-order .wrapper {
+    margin: 70px auto;
+    padding: 20px;
+    background: var(--grey);
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.modal-edit-order .wrapper h2 {
+    margin-top: 0;
+    color: var(--dark);
+}
+
+.modal-edit-order .wrapper i {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 20ms;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--dark);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.modal-edit-order .wrapper .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+.modal-edit-order .wrapper .content .container {
+    padding: 20px 0 0;
+}
+
+.modal-edit-order .wrapper .content .container .input-data {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.modal-edit-order .wrapper .content .container .input-data span,
+.modal-edit-order .wrapper .content .container .order-status span,
+.modal-edit-order .wrapper .content .container .food-list-order span {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.modal-edit-order .wrapper .content .container .order-status,
+.modal-edit-order .wrapper .content .container .food-list-order {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.modal-edit-order .wrapper .content .container .order-status .status {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-edit-order .wrapper .content .container .order-status .status span.data {
+    border-radius: 30px;
+    text-align: center;
+    color: var(--light);
+    padding: 2px 16px;
+    background: var(--warning);
+}
+
+.modal-edit-order .wrapper .content .container .order-status .status span.data.completed {
+    border-radius: 30px;
+    text-align: center;
+    color: var(--light);
+    padding: 2px 16px;
+    background: var(--success);
+}
+
+.modal-edit-order .wrapper .content .container .order-status .status span.edit {
+    display: flex;
+    cursor: pointer;
+    color: var(--success);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-edit-order .wrapper .content .container .order-status .status span.edit:hover {
+    text-decoration: underline;
+}
+
+.modal-edit-order .wrapper .content .container .food-list-order .list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.modal-edit-order .wrapper .content .container .food-list-order .list span {
+    background: transparent;
+    color: var(--glow);
+}
+
+.modal-edit-order .wrapper .content .container .button-section {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-edit-order .wrapper .content .container .button-section input,
+.modal-edit-order .wrapper .content .container .button-section button {
+    margin-top: 50px;
+    border: none;
+    width: 40%;
+    height: 40px;
+    padding: 5px;
+    font-size: 16px;
+    color: var(--light);
+    background: var(--primary);
+    cursor: pointer;
+}
+
+.modal-edit-order .wrapper .content .container .button-section button {
+    background: var(--danger);
+}
+
+.modal-edit-order .wrapper .content .container .button-section input:hover {
+    background: var(--primary);
+    opacity: 0.9;
+}
+
+.modal-edit-order .wrapper .content .container .button-section button:hover {
+    background: var(--danger);
+    opacity: 0.9;
+}
+
+.modal-edit-order .wrapper .content .container .button-section input:disabled {
+    background: var(--dark-grey);
+    color: var(--light);
+    cursor: default;
+}
+
+.modal-edit-order .wrapper .content .container .button-section input:disabled:hover {
+    background: var(--dark-grey);
+    opacity: 1;
+}
+/*
+*  -------------------------- End of Customer Order Page ----------------------------
+*/
+
+/*
+*  -------------------------- Reservation Page --------------------------------------
+*/
+.reservation-index main .content {
+    padding: 24px;
+}
+
+.reservation-index main .content .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.reservation-index main .content .reservation-status {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+    gap: 30px;
+}
+
+.reservation-index main .content .reservation-status .container {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    background: var(--light);
+    padding: 16px;
+    gap: 20px;
+}
+
+.reservation-index main .content .reservation-status .container i {
+    font-size: 48px;
+}
+
+.reservation-index main .content .reservation-status .container i {
+    color: var(--main-blue);
+}
+
+.reservation-index main .content .reservation-status .container .data {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.reservation-index main .content .reservation-status .container .data span.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.reservation-index main .content .reservation-status .container .data span.data {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.reservation-index main .content .reservation-status .container .data span.data {
+    color: var(--main-blue);
+}
+
+.reservation-index main .content .bottom-section {
+    margin-top: 50px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 5px 12px rgba(32, 32, 32, 0.3);
+}
+
+.reservation-index main .content .bottom-section .table-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    color: var(--default);
+    background: var(--dark);
+    padding: 12px 24px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.reservation-index main .content .bottom-section .table-top h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000 !important;
+}
+/*
+*  --------------------------- End of Reservation Page -----------------------------------
+*/

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Changes</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .test-button { 
+            background: #dc3545; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            margin: 10px;
+        }
+        .test-button:disabled {
+            background: #dc3545;
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .order-section {
+            border: 2px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .error-message {
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 1px solid red;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Page - التعديلات الجديدة</h1>
+    
+    <div class="order-section">
+        <h3>Your Order Number (التعديل 1)</h3>
+        <input type="number" placeholder="Enter your order number (e.g. 1, 2, 3...)" style="padding: 8px; width: 250px;">
+    </div>
+    
+    <div class="order-section">
+        <h3>Button States (التعديل 2)</h3>
+        <button class="test-button">Confirm Order (Active)</button>
+        <button class="test-button" disabled>Confirm Order (Disabled - Red)</button>
+    </div>
+    
+    <div class="order-section">
+        <h3>Error Messages (التعديل 3)</h3>
+        <div class="error-message">Please enter table number.</div>
+        <div class="error-message">Please enter your order number.</div>
+    </div>
+    
+    <div class="order-section">
+        <h3>Test Validation</h3>
+        <button onclick="testValidation()">Test Error Message</button>
+        <div id="error-display"></div>
+    </div>
+    
+    <script>
+        function testValidation() {
+            const errorDiv = document.getElementById('error-display');
+            errorDiv.innerHTML = '<div class="error-message">This is a test error message!</div>';
+            
+            setTimeout(() => {
+                errorDiv.innerHTML = '';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
